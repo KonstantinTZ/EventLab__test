@@ -1,0 +1,913 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  /* max-width сделано для того что бы изображение не  выходило за пределы контейнера в котором находится */
+}
+
+body {
+  min-width: 320px;
+  /*min-width сделано для пользователей мобильных устройств  контент будет заскейлен вниз (уменьшен масштаб) 768 было*/
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+
+}
+
+/* Убираем стандартную обводку */
+
+:focus {
+  outline: none !important;
+}
+
+::-moz-focus-outer,
+::-moz-focus-inner {
+  border: 0px !important;
+  padding: 0;
+}
+
+a:focus,
+a:active,
+button:focus {
+  outline: 0 !important;
+  outline-color: transparent !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+}
+
+input,
+textarea,
+input:active,
+textarea:active {
+  outline: none;
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  visibility: hidden;
+}
+
+/*
+    ==================================
+    Global
+    ==================================
+    */
+
+:root {
+  --color-grey: #F3F3F3;
+  --color-dark-grey: #D9D9D9;
+  --color-grey-middle: #808080;
+  --color-black: #242424;
+  --color-red: #EF402F;
+
+  /* для слайдера */
+
+}
+
+/*
+    ==================================
+    mixin
+    ==================================
+    */
+
+@mixin redButton {
+  padding: 10px 34px;
+  border: 1px solid var(--color-red);
+  border-radius: 71px;
+
+  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--color-red);
+    border-color: #EF402F;
+  }
+
+  &:focus {
+    color: var(--color-red);
+    border-color: #EF402F;
+  }
+
+  &:active {
+    color: var(--color-red);
+    border-color: #EF402F;
+  }
+}
+
+@mixin blackButton {
+  padding: 10px 34px;
+  border: 1px solid var(--color-black);
+  border-radius: 71px;
+
+  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--color-red);
+    border-color: #EF402F;
+  }
+
+  &:focus {
+    color: var(--color-red);
+    border-color: #EF402F;
+  }
+
+  &:active {
+    color: var(--color-red);
+    border-color: #EF402F;
+  }
+}
+
+@mixin mainButton {
+  color: var(--color-grey);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  background-color: var(--color-red);
+  border-radius: 8px;
+
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+@mixin select {
+  padding: 9px 10px 9px 16px;
+  border: 1px solid var(--color-dark-grey);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+
+
+.container {
+  max-width: 1650px;
+  margin: 0 auto;
+  padding: 0 19px;
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.btn-reset {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+//==========================
+//modal
+//==========================
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &__label {
+    width: 100%
+  }
+
+  &-input {
+    @include blackButton();
+    width: 100%
+  }
+
+  &-button {
+    @include redButton();
+    margin-bottom: 40px;
+  }
+}
+
+// .modal-checkbox-container {
+//     display: flex;
+// }
+
+//==========================
+//header
+//==========================
+
+.header {
+  margin-bottom: 121px;
+}
+
+.header__container {
+  padding-top: 40px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.first-line {
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  margin-bottom: 32px;
+
+
+  &__info {
+    color: var(--color-dark-grey);
+    padding-left: 30px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      left: 0;
+      // background-image: url('../img/first-line__point.svg');
+      background-repeat: no-repeat;
+    }
+
+    &--time::before {
+      background-image: url('../img/first-line__point.svg');
+    }
+
+    &--tel {
+      transition: color 0.2s ease-in-out;
+    }
+
+    &--tel:hover {
+      color: var(--color-black)
+    }
+
+    &--tel:focus {
+      color: var(--color-black)
+    }
+
+    &--tel:active {
+      color: var(--color-red)
+    }
+
+
+    &--tel::before {
+      background-image: url('../img/first-line__phone-call.svg');
+    }
+
+    &--favorites::before {
+      background-image: url('../img/first-line__heart.svg');
+    }
+  }
+}
+
+.second-line {
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    margin-right: auto;
+
+  }
+}
+
+.nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 47px;
+
+  .nav__link {
+    transition: color 0.2s ease-in-out;
+  }
+
+  .nav__link:hover {
+    color: var(--color-red)
+  }
+
+  .nav__link:focus {
+    color: var(--color-red)
+  }
+
+  .nav__link:active {
+    color: var(--color-red)
+  }
+
+
+  .nav__link--round {
+    // padding: 16px 34px;
+    // border: 1px solid var(--color-black);
+    // border-radius: 71px;
+    @include blackButton();
+  }
+
+  .nav__link--round-red {
+
+    @include redButton();
+  }
+
+  .nav__item--hidden {
+    visibility: hidden;
+    display: none;
+  }
+
+}
+
+.burger {
+  display: none;
+}
+
+//==========================
+//main
+//==========================
+
+//==========================
+//main/hero
+//==========================
+
+.hero {
+  margin-bottom: 114px;
+}
+
+.swiper-slide {
+
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  &--1 {
+    background-image: url('https://png.pngtree.com/background/20230525/original/pngtree-3d-image-of-apartment-buildings-on-a-white-background-picture-image_2732411.jpg');
+  }
+
+  &--2 {
+    background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20230715/pngtree-d-wireframe-illustration-of-a-house-building-with-architectural-sketch-and-image_3874248.jpg');
+  }
+
+  &--3 {
+    background-image: url('../img/sleder___3.jpg');
+  }
+
+  &--4 {
+    background-image: url('https://bigfoto.name/uploads/posts/2021-12/1640337625_5-bigfoto-name-p-dom-belii-fon-11.png');
+  }
+
+}
+
+
+.slide {
+  display: flex;
+  justify-content: space-between;
+
+  &__title {
+    font-size: 65px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 105%;
+    text-transform: uppercase;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__descr {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 275;
+    line-height: 140%;
+    margin-bottom: 32px;
+    text-align: right;
+  }
+
+
+
+  &__button {
+    @include mainButton();
+    align-self: flex-end;
+    padding: 13px 156px;
+  }
+}
+
+.swiper-buttom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100.5%;
+
+}
+
+.swiper-pagination {
+  position: relative;
+  width: auto;
+}
+
+.swiper-button-wrapper {
+  display: flex;
+  gap: 26px;
+}
+
+.swiper-button-prev {
+  position: relative;
+}
+
+.swiper-button-next {
+  position: relative;
+}
+
+.swiper-pagination-current {
+  color: var(--color-red);
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.swiper-button-prev {
+  width: 50px;
+  height: 50px;
+
+  &::after {
+    content: '';
+  }
+
+  &:hover {
+    .swiper-button-prev-svg {
+
+      circle,
+      path {
+        stroke: var(--color-dark-grey);
+      }
+    }
+  }
+
+  &:focus {
+    .swiper-button-prev-svg {
+
+      circle,
+      path {
+        stroke: var(--color-dark-grey);
+      }
+    }
+  }
+
+  &:active {
+    .swiper-button-prev-svg {
+
+      circle,
+      path {
+        stroke: var(--color-red);
+      }
+    }
+  }
+}
+
+.swiper-button-next {
+  width: 50px;
+  height: 50px;
+
+  &::after {
+    content: '';
+  }
+
+  &-svg {
+    transform: rotateY(180deg);
+    transition: stroke .2s ease-in-out;
+  }
+
+  &:hover {
+    .swiper-button-next-svg {
+
+      circle,
+      path {
+        stroke: var(--color-dark-grey);
+      }
+    }
+  }
+
+  &:focus {
+    .swiper-button-next-svg {
+
+      circle,
+      path {
+        stroke: var(--color-dark-grey);
+      }
+    }
+  }
+
+  &:active {
+    .swiper-button-next-svg {
+
+      circle,
+      path {
+        stroke: var(--color-red);
+      }
+    }
+  }
+}
+
+//==========================
+//main/housing
+//==========================
+
+.housing__title {
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+}
+
+.page-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 61px;
+  margin-bottom: 65px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 9px;
+  }
+
+  &__select {
+    @include select();
+    max-width: 156px;
+  }
+
+  &__box {
+    gap: 4px;
+    align-self: flex-end;
+  }
+
+  &__button-multiplicity {
+    padding: 7px 12px;
+    height: 36px;
+    border: 1px solid var(--color-dark-grey);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &__button-multiplicity:hover {
+    border-color: var(--color-red);
+    color: var(--color-red);
+  }
+
+  &__button-multiplicity:focus {
+    border-color: var(--color-red);
+    background-color: var(--color-red);
+    color: var(--color-grey);
+    font-weight: 600;
+  }
+
+  &__decor {
+    color: var(--color-grey-middle);
+    font-size: 14px;
+  }
+
+  &__price-input {
+    @include select();
+    width: 116px;
+
+    &--extra-gap {
+      margin-right: 24px;
+    }
+  }
+
+  &__submit-button {
+    @include mainButton();
+    height: 38px;
+    padding: 0 71px;
+    font-size: 14px;
+    align-self: flex-end;
+  }
+
+  .box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+}
+
+.filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 19px;
+  margin-bottom: 7px;
+
+  &__wrapper {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    @include select();
+    &--left{
+      width:135px ;
+    }
+    &--right{
+      width:186px ;
+    }
+  }
+}
+
+//==========================
+//main/cards
+//==========================
+.cards__container {
+  padding: 0 6px;
+  margin-bottom: 143px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-color: #fff;
+
+  &__img {
+    width: 100%;
+    height: 623px;
+    border-radius: 12px;
+    
+  }
+
+  &__descr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  &__descr {
+    font-size: 18px;
+    margin-bottom: 13px;
+  }
+
+  &__link {
+    font-size: 18px;
+    color: var(--color-red);
+    text-decoration: underline;
+  }
+}
+
+.card__img-wrapper{
+position: relative;
+margin-bottom: 28px;
+}
+
+.img__descr-wrapper{
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  bottom: 21px;
+  left: 24px;
+}
+
+.img__descr {
+  color: var(--color-grey);
+  font-size: 14px;
+  padding: 10px 19px;
+  border-radius: 81px;
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(2.5px);
+}
+
+@media (max-width:1200px) {
+  //==========================
+  //HEADER
+  //==========================
+
+  .first-line {
+    display: none;
+    visibility: hidden;
+  }
+
+  .nav {
+    /* данные для бургер меню */
+    position: absolute;
+    /* из за того что абсолют и width 50% выезжает на половину экрана */
+    left: 0;
+    top: 0;
+    width: 24%;
+    min-width: 320px;
+    height: 100vh;
+    /* почитать что такое vh */
+    z-index: 500;
+    /* что бы точно поверх всего контента */
+    padding: 50px;
+    padding-top: 170px;
+    box-shadow: 0 0 5px #888;
+    background-color: #fff;
+    overflow-y: auto;
+    /* что бы пункты меню помещались на сайт, когда он слишком мал по высоте. и появлялся скролл*/
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-120%);
+    /* выезд белого прямоугольника слева */
+    transition: transform 0.3s linear, opacity 0.5s linear;
+    /* visibility,tramsform,transition что бы меню красиво появлялось */
+  }
+
+  .nav .nav__list {
+    flex-direction: column;
+  }
+
+  .nav .nav__item:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .nav .nav__link {
+    font-size: 16px;
+  }
+
+  .nav--active {
+    /* при инициализации через js появляются эти стили у header__nav*/
+    visibility: visible;
+    transform: none;
+    opacity: 1;
+  }
+
+  .nav__list {
+    .nav__item--hidden {
+      visibility: visible;
+      display: list-item
+    }
+  }
+
+  .burger {
+    display: block;
+    z-index: 1000;
+    position: relative;
+    width: 30px;
+    height: 32px;
+    /* кликабельный размер 30х30 32 потому что лучше делится */
+  }
+
+  .burger__line {
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: var(--color-black);
+    left: 50%;
+    transform: translateX(-50%);
+    /*что бы выровнять все палочки горизонтально по центру  относительно данной кнопки*/
+  }
+
+  .burger__line:nth-child(1) {
+    /*:nth-child обращаемся к первой палочке и.т.д.  */
+    top: 4px;
+  }
+
+  .burger__line:nth-child(3) {
+    /*:nth-child обращаемся к третей палочке и.т.д.  */
+    bottom: 4px;
+  }
+
+  .burger__line:nth-child(2) {
+    /*:nth-child обращаемся к второй палочке и.т.д.  */
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 25px;
+    /* такиим образом центрируем */
+    /* translateX(-50%) дублируем , т.к иначе оно отменяется из за  translateY(-50%) */
+  }
+
+  /* классы для того что бы бургер превратился в крестик, среднюю линию скрываем, крайние поворачиваем в крестик и ставим на середину */
+
+  .burger--active .burger__line:nth-child(2) {
+    opacity: 0;
+    /* линия по середине бургера при активации изчезает */
+  }
+
+  .burger--active .burger__line:first-child {
+    /* линия сверху бургера встает под 45град */
+    left: 25%;
+    top: 50%;
+    transform: rotate(45deg);
+    transform-origin: center;
+    transition: transform 0.3s linear, top 0.3s linear, left 0.3s linear;
+  }
+
+  .burger--active .burger__line:last-child {
+    /* линия снизу бургера встает под -45 град */
+    bottom: auto;
+    left: 25%;
+    top: 50%;
+    transform: rotate(-45deg);
+    transform-origin: center;
+    transition: transform 0.3s linear, top 0.3s linear, left 0.3s linear;
+  }
+
+  .stop-scroll {
+    overflow: hidden;
+    /* что бы когда появлется менюха слева нельзя было скролить, в js  примяняется прям к боди */
+  }
+
+  //==========================
+  //main/hero
+  //==========================
+
+  .slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 140px;
+
+    &__wrapper {
+      max-width: 400px;
+    }
+
+    &__button {
+      padding: 20px 30px;
+      align-self: center;
+    }
+
+    &__descr {
+      text-align: center;
+    }
+  }
+
+}
+
+@media (max-width:576px) {
+  .slide {
+    &__title {
+      font-size: 27px;
+    }
+
+    &__wrapper {
+      max-width: 256px;
+    }
+
+    &__descr {
+      font-size: 16px;
+    }
+  }
+
+  .card__img{
+    height: 400px;
+  }
+
+}
+
+
+// настройки от плагинов
+
+
+.just-validate-error-label {
+  margin-right: 25px;
+  color: var(--color-red) !important;
+}
+
+.swiper {
+  max-width: 1612px;
+  height: 830px;
+  margin-bottom: 42px;
+}

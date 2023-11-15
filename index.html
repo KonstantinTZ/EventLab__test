@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <title>СОЮЗ</title>
+</head>
+
+<body>
+
+  <!-- Модальное окно -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Форма заказа обратного звонка</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <form class="modal-form form" id="modal-form">
+
+            <label class="modal-form__label"><input class="name modal-form-input modal-form-input--name"
+                id="client-name" type="text" placeholder="Имя*" name="name" data-validate-field="name"></label>
+            <label class="modal-form__label"><input class="tel  modal-form-input modal-form-input--tel" id="client-tel"
+                type="tel" placeholder="Телефон*" name="tel" data-validate-field="tel"
+                data-validate-rule="phone"></label>
+
+            <label class="modal-form__label"><input class="mail modal-form-input modal-form-input--mail"
+                id="client-email" type="email" placeholder="E-mail*" name="email" data-validate-field="mail"></label>
+
+            <div class="modal-checkbox-container">
+              <input class="checkbox-modal" id="checkbox" type="checkbox" name="checkbox"
+                data-validate-field="checkbox">
+              <label class="modal-form__label modal-checkbox" for="checkbox">
+                Я согласен(сна) на <a href="#">обработку</a> персональных данных
+              </label>
+              <br>
+            </div>
+
+
+            <button class="input-submit modal-form-button btn-reset" type="submit" name="submit">Заказать
+              звонок</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container header__container">
+      <div class="header__first-line first-line">
+        <span class="first-line__info first-line__info--time">Офис продаж: с 9 до 18</span>
+        <a class="first-line__info first-line__info--tel" href="tel:+78421000000">8 8421 00 00 00</a>
+        <span class="first-line__info first-line__info--favorites">Избранное</span>
+      </div>
+      <div class="header__second-line second-line">
+        <img class="second-line__logo" src="img/logo.svg" alt="логотип" width="148px" height="41px">
+        <nav class="second-line__nav nav">
+          <ul class="nav__list list-reset">
+            <li class="nav__item nav__item--hidden">
+              <a href="#" class="nav__link"><img class="snav__link__logo" src="img/logo.svg" alt="логотип" width="148px"
+                  height="41px"></a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link nav__link--round">Ипотека от 4%</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">Объекты</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">Коммерческая недвижимость</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">Способы покупки</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link">Контакты</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link nav__link--round-red" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Заказать звонок</a>
+            </li>
+
+            <li class="nav__item nav__item--hidden">
+              <a href="#" class="nav__link ">Офис продаж: с 9 до 18</a>
+            </li>
+
+            <li class="nav__item nav__item--hidden">
+              <a href="#" class="nav__link">8 8421 00 00 00</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="second-line__burger btn-reset burger" id="burger">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </button>
+      </div>
+    </div>
+
+  </header>
+  <main class="main">
+    <section class="hero">
+      <div class="container hero__container">
+        <!-- Slider main container -->
+        <div class="swiper">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide swiper-slide--1 slide">
+              <h2 class="slide__title">Далеко-далеко, за словесными.</h2>
+              <div class="slide__wrapper">
+                <span class="slide__descr">Далеко-далеко за словесными горами в стране гласных и согласных живут
+                  рыбные.</span>
+                <button class="slide__button main-button btn-reset">
+                  Подробнее
+                </button>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide--2 slide">
+              <h2 class="slide__title">Далеко-далеко, за словесными.</h2>
+              <div class="slide__wrapper">
+                <span class="slide__descr">Далеко-далеко за словесными горами в стране гласных и согласных живут
+                  рыбные.</span>
+                <button class="slide__button main-button btn-reset">
+                  Подробнее
+                </button>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide--3 slide">
+              <h2 class="slide__title">Далеко-далеко, за словесными.</h2>
+              <div class="slide__wrapper">
+                <span class="slide__descr">Далеко-далеко за словесными горами в стране гласных и согласных живут
+                  рыбные.</span>
+                <button class="slide__button main-button btn-reset">
+                  Подробнее
+                </button>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide--4 slide">
+              <h2 class="slide__title">Далеко-далеко, за словесными.</h2>
+              <div class="slide__wrapper">
+                <span class="slide__descr">Далеко-далеко за словесными горами в стране гласных и согласных живут
+                  рыбные.</span>
+                <button class="slide__button main-button btn-reset">
+                  Подробнее
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="swiper-buttom-bar">
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-wrapper">
+            <div class="swiper-button-prev">
+              <svg class="swiper-button-prev-svg" width="50" height="50" viewBox="0 0 50 50" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle cx="25" cy="25" r="24.5" transform="rotate(180 25 25)" stroke="#242424" />
+                <path d="M26.6667 20L21.6667 25L26.6667 30" stroke="#242424" stroke-linecap="square"
+                  stroke-linejoin="round" />
+              </svg>
+
+            </div>
+            <div class="swiper-button-next">
+              <svg class="swiper-button-next-svg" width="50" height="50" viewBox="0 0 50 50" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle cx="25" cy="25" r="24.5" transform="rotate(180 25 25)" stroke="#242424" />
+                <path d="M26.6667 20L21.6667 25L26.6667 30" stroke="#242424" stroke-linecap="square"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="housing">
+      <div class="container__housing container">
+        <h2 class="housing__title">
+          Выбирете ваш будущий дом
+        </h2>
+        <form class="housing__form page-form" id="housing-form ">
+          <div class="page-form__wrapper">
+            <span class="page-form__title">
+              Жилой комплекс
+            </span>
+            <select class="page-form__select" name="" id="page-form__select-ZK">
+              <option value="any" selected>Любой</option>
+              <option value="any">ЖК Аврора</option>
+              <option value="any">ЖК Чистые ручьи</option>
+            </select>
+          </div>
+          <div class="page-form__wrapper">
+            <span class="page-form__title">
+              Комнатность
+            </span>
+            <div class="page-form__box">
+              <button class="page-form__button-multiplicity btn-reset">
+                Студия
+              </button>
+              <button class="page-form__button-multiplicity btn-reset">
+                1
+              </button>
+              <button class="page-form__button-multiplicity btn-reset">
+                2
+              </button>
+              <button class="page-form__button-multiplicity btn-reset">
+                3
+              </button>
+              <button class="page-form__button-multiplicity btn-reset">
+                4
+              </button>
+            </div>
+          </div>
+          <div class="page-form__wrapper">
+            <span class="page-form__title">
+              Цена
+            </span>
+            <div class="page-form__box box">
+              <div class="box__wrapper">
+                <span class="page-form__decor">От</span>
+                <input class="page-form__price-input page-form__price-input--extra-gap" type="number" min="600000">
+              </div>
+              <div class="box__wrapper">
+                <span class="page-form__decor">До</span>
+                <input class="page-form__price-input" type="number" max="40000000">
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="page-form__submit-button btn-reset">
+            Показать
+          </button>
+        </form>
+        <form class="housing__form filter-form" id="filter-form">
+          <div class="filter-form__wrapper">
+            <span class="filter-form__title">
+              Проекты
+            </span>
+            <select class="filter-form__select filter-form__select--left" name="" id="filter-form__projects">
+              <option value="any" selected>В продаже</option>
+              <option value="any">Строится</option>
+              <option value="any">В проекте</option>
+            </select>
+          </div>
+          <div class="filter-form__wrapper">
+            <span class="filter-form__title">
+              Тип недвижимости
+            </span>
+            <select class="filter-form__select filter-form__select--right" name="" id="filter-form__type">
+              <option value="any" selected>Любой тип</option>
+              <option value="any">Новостройка</option>
+              <option value="any">Вторичка</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="cards">
+      <div class="container cards__container row row-cols-1 row-cols-md-3 g-4" id="cards-container">
+        <!-- <div class="cars__item card">
+          <div class="card__img-wrapper">
+            <img class="card__img card-img-top img" src="img/card__image-1.jpg" alt="иллюстрация ЖК">
+            <div class="img__descr-wrapper">
+              <span class="img__descr">Паркинг</span>
+              <span class="img__descr">Индивидуальная отделка</span>
+            </div>
+          </div>
+          <div class="card__text">
+            <h5 class="card__title">
+              ЖК "Эконом"
+            </h5>
+            <span class="card__descr mortgage">
+              в ипотеку от 8900 руб.
+            </span>
+            <a class="card__link" href="#">
+              Подробнее
+            </a>
+          </div>
+        </div> -->
+
+
+
+
+
+
+
+
+
+      </div>
+    </section>
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <script src="./js/just-validate.min.js"></script>
+  <script src="./js/inputmask.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>
